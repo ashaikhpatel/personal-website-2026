@@ -28,3 +28,10 @@ body {
 .mughal-arch-clip {
   clip-path: ellipse(100% 100% at 50% 100%);
 }
+
+.romantic-bg-container {
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
