@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #d38e8e;
     --foreground: #ededed;
   }
 }
@@ -34,4 +34,24 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.bio-stationery-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background-image: url('/pink-paper.jpeg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bio-text-overlay {
+  position: absolute;
+  top: 5%;
+  bottom: 0%;
+  left: 18%;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
 }
