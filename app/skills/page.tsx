@@ -1,146 +1,139 @@
-import React from 'react'
+"use client";
+import React, { useState } from 'react';
+import TimeLineItem from '../components/TimeLineItem';
+import { TulipIcon } from '../components/Icons';
 
-const Skills = () => {
+export default function SkillsPage() {
+  const [selectedArtifact, setSelectedArtifact] = useState<number | null>(null);
+
   return (
-    <main className="max-w-6xl mx-auto p-10 font-serif text-[#6B4E31]">
-      <header className="mb-16 text-center">
-        <h1 className="text-4xl md:text-5xl mb-4 text-[#556B2F]">Technical Artistry</h1>
-        <p className="italic text-[#C87D87]">A showcase of my skills and experience.</p>
-      </header>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
-        <section className="space-y-12">
-          <div className="bg-[#FDF5E6] p-8 rounded-sm border border-[#EAD7BB] shadow-sm">
-            <h2 className="text-3xl mb-6 text-[#556B2F] border-b border-[#EAD7BB] pb-2">Digital Languages</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm font-medium">
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F]">Python</div>
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F]">Java</div>
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F]">C++</div>
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F]">C</div>
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F]">HTML</div>
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F]">Next.js</div>
-              <div className="p-4 bg-white border border-[#EAD7BB] text-center text-[#556B2F] col-span-2 md:col-span-1">Tailwind CSS</div>
-            </div>
+    <main className="min-h-screen bg-[#FFF9F0] p-10 font-serif text-[#6B4E31]">
+      <div className="max-w-6xl mx-auto relative">
+        
+        <div className="absolute top-10 -right-20 opacity-5 pointer-events-none rotate-45">
+            <TulipIcon className="w-96 h-96 text-[#96A480]" />
+        </div>
+
+        <header className="text-center mb-24 space-y-2">
+          <h1 className="text-7xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
+            Technical Artistry
+          </h1>
+          <div className="flex items-center justify-center gap-6">
+            <div className="h-[2px] w-24 bg-[#9E616A] opacity-30" />
+            <p className="italic text-[#9E616A] text-xl font-medium tracking-wide">A showcase of my skills and experience</p>
+            <div className="h-[2px] w-24 bg-[#9E616A] opacity-30" />
           </div>
+        </header>
 
-          <div className="bg-[#FDF5E6] p-8 rounded-sm border border-[#EAD7BB] shadow-sm">
-            <h2 className="text-3xl mb-8 text-[#556B2F] border-b border-[#EAD7BB] pb-2">Tools</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <h3 className="font-bold text-[#C87D87] uppercase tracking-widest text-xs">Development</h3>
-                <ul className="space-y-2 text-sm text-[#6B4E31]">
-                  <li className="flex items-center gap-2"><span>✦</span> VS Code</li>
-                  <li className="flex items-center gap-2"><span>✦</span> CLion</li>
-                  <li className="flex items-center gap-2"><span>✦</span> Git & GitHub</li>
-                </ul>
-              </div>
-              <div className="space-y-4">
-                <h3 className="font-bold text-[#C87D87] uppercase tracking-widest text-xs">Cybersecurity</h3>
-                <ul className="space-y-2 text-sm text-[#6B4E31]">
-                  <li className="flex items-center gap-2"><span>✦</span> HackTheBox Labs</li>
-                  <li className="flex items-center gap-2"><span>✦</span> Secure Version Control</li>
-                </ul>
-              </div>
-              <div className="space-y-4 md:col-span-2">
-                <h3 className="font-bold text-[#C87D87] uppercase tracking-widest text-xs border-b border-[#EAD7BB] pb-1">Design & Workflow</h3>
-                <ul className="grid grid-cols-2 gap-2 text-sm text-[#6B4E31]">
-                  <li className="flex items-center gap-2"><span>✦</span> Figma (UI/UX)</li>
-                  <li className="flex items-center gap-2"><span>✦</span> Notion</li>
-                  <li className="flex items-center gap-2"><span>✦</span> Microsoft Excel</li>
-                  <li className="flex items-center gap-2"><span>✦</span> Google Sheets</li>
-                </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-40">
+          <section className="space-y-10">
+            <div className="relative bg-[#F6DFE0] p-12 rounded-[4rem] border-2 border-[#E5B1B6] shadow-[inset_0_2px_10px_rgba(158,97,106,0.1)]">
+              <h2 className="text-4xl mb-10 text-[#556B2F] font-serif italic text-center decoration-4 underline-offset-8">
+                Digital Languages
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {["Python", "Java", "C++", "C", "HTML", "Next.js", "Tailwind", "JS"].map((lang) => (
+                  <button 
+                    key={lang} 
+                    className="py-4 bg-[#FFFDFB]/80 hover:bg-[#9E616A] hover:text-[#FCEEA8] border border-[#E5B1B6] rounded-2xl text-[10px] font-bold uppercase tracking-[0.2em] text-[#800000] transition-all duration-300 hover:-translate-y-1 shadow-sm active:scale-95"
+                  >
+                    {lang}
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
 
-        <section className="space-y-12">
-          <div className="border-l-4 border-[#D1AE6D] pl-6 space-y-6">
-            <h2 className="text-3xl text-[#556B2F]">Current Focus</h2>
-            <div className="space-y-6">
-              <div>
-                <span className="font-bold text-lg text-[#556B2F]">Cybersecurity & Security-First Dev</span>
-                <p className="italic text-sm mt-1">Focusing on resilient systems and secure web practices.</p>
-              </div>
-              <div>
-                <span className="font-bold text-lg text-[#556B2F]">UI/UX Prototyping (Figma)</span>
-                <p className="italic text-sm mt-1">Translating artistic vision into functional digital interfaces.</p>
-              </div>
-              <div>
-                <span className="font-bold text-lg text-[#556B2F]">HackTheBox (Independent study)</span>
-                <p className="italic text-sm mt-1">Building hands-on technical skills in penetration testing and security.</p>
+            <div className="bg-[#F6DFE0] p-12 rounded-[4rem] border-2 border-[#E5B1B6] relative overflow-hidden">
+               <div className="absolute -top-4 -right-4 w-16 h-16 bg-[#9E616A] rounded-full opacity-10 blur-xl" />
+               
+              <h2 className="text-4xl mb-10 text-[#556B2F] font-serif italic text-center">My Toolbelt</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="bg-[#FFFDFB]/60 p-8 rounded-[2.5rem] border border-[#E5B1B6]">
+                  <h3 className="font-bold text-[#800000] uppercase tracking-[0.3em] text-[11px] mb-6 border-b-2 border-[#FCEEA8] pb-2 text-center">Development</h3>
+                  <ul className="space-y-4 text-sm italic">
+                    <li className="flex items-center gap-3 hover:text-[#96A480] transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" /> VS Code & CLion
+                    </li>
+                    <li className="flex items-center gap-3 hover:text-[#96A480] transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" /> Git & GitHub
+                    </li>
+                    <li className="flex items-center gap-3 hover:text-[#96A480] transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" /> Notion & Excel
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-[#FFFDFB]/60 p-8 rounded-[2.5rem] border border-[#E5B1B6]">
+                  <h3 className="font-bold text-[#800000] uppercase tracking-[0.3em] text-[11px] mb-6 border-b-2 border-[#FCEEA8] pb-2 text-center">Security & Art</h3>
+                  <ul className="space-y-4 text-sm italic">
+                    <li className="flex items-center gap-3 hover:text-[#96A480] transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" /> HackTheBox Labs
+                    </li>
+                    <li className="flex items-center gap-3 hover:text-[#96A480] transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" /> Figma (UI/UX)
+                    </li>
+                    <li className="flex items-center gap-3 hover:text-[#96A480] transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" /> Color Theory
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="pt-4">
-            <h3 className="text-xs uppercase tracking-[0.2em] text-[#C87D87] mb-6 font-sans">Artifacts</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="group relative overflow-hidden border border-[#EAD7BB] bg-white p-2 shadow-sm transition-all duration-500 hover:-rotate-2 hover:shadow-md">
-                <div className="overflow-hidden bg-[#FDF5E6] aspect-video mb-2">
-                </div>
-                <p className="text-[10px] italic text-center text-[#6B4E31]">No. 01: coming soon</p>
-              </div>
-
-              <div className="group relative overflow-hidden border border-[#EAD7BB] bg-white p-2 shadow-sm transition-all duration-500 hover:rotate-2 hover:shadow-md">
-                <div className="overflow-hidden bg-[#FDF5E6] aspect-video mb-2">
-                </div>
-                <p className="text-[10px] italic text-center text-[#6B4E31]">No. 02: coming soon</p>
-              </div>
-
-               <div className="group relative overflow-hidden border border-[#EAD7BB] bg-white p-2 shadow-sm transition-all duration-500 hover:-rotate-2 hover:shadow-md">
-                <div className="overflow-hidden bg-[#FDF5E6] aspect-video mb-2">
-                </div>
-                <p className="text-[10px] italic text-center text-[#6B4E31]">No. 03: coming soon</p>
-              </div>
-
-              <div className="group relative overflow-hidden border border-[#EAD7BB] bg-white p-2 shadow-sm transition-all duration-500 hover:rotate-2 hover:shadow-md">
-                <div className="overflow-hidden bg-[#FDF5E6] aspect-video mb-2">
-                </div>
-                <p className="text-[10px] italic text-center text-[#6B4E31]">No. 04: coming soon</p>
+          <section className="space-y-10">
+            <div className="text-center">
+              <h3 className="text-xs uppercase tracking-[0.6em] text-[#9E616A] mb-12 font-bold border-y-2 border-[#E5B1B6] py-6 inline-block px-12">
+                Artifacts
+              </h3>
+              <div className="grid grid-cols-2 gap-12">
+                {[1, 2, 3, 4].map((num) => (
+                 <div 
+                    key={num}
+                    onClick={() => setSelectedArtifact(num)}
+                    className={`relative p-3 transition-all duration-500 cursor-pointer
+                      ${num % 2 === 0 ? 'hover:rotate-2' : 'hover:-rotate-2'} 
+                      ${selectedArtifact === num ? 'scale-105' : 'hover:scale-102'}`}
+                  >
+                    <div className="relative z-10 aspect-[4/5] bg-[#FDF5E6] rounded-sm border-[10px] border-[#D1AE6D] shadow-[5px_15px_35px_rgba(107,78,49,0.2)] flex flex-col items-center justify-center p-6">
+                      <div className="w-full h-full border-2 border-[#D1AE6D]/30 flex flex-col items-center justify-center overflow-hidden bg-white/40 backdrop-blur-sm">
+                        <TulipIcon className="w-10 h-10 text-[#96A480] opacity-20 mb-3" />
+                        <span className="text-[10px] text-[#9E616A] tracking-[0.3em] font-bold">No. 0{num}</span>
+                      </div>
+                      <div className="absolute -bottom-4 -right-4 w-10 h-10 bg-[#9E616A] rounded-full shadow-lg flex items-center justify-center scale-0 group-hover:scale-100 transition-transform">
+                         <TulipIcon className="w-4 h-4 text-[#FCEEA8]" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          </section>
+        </div>
+
+        <section className="mt-60 border-t-2 border-[#E5B1B6] pt-32 relative">
+          <header className="text-center mb-24">
+            <h2 className="text-6xl text-[#556B2F] font-[family-name:var(--font-fleur)] mb-6 tracking-tight">Professional Journey</h2>
+          </header>
+          <div className="absolute left-1/2 top-[380px] bottom-0 w-[3px] bg-gradient-to-b from-[#E5B1B6] via-[#9E616A] to-transparent -translate-x-1/2 hidden md:block opacity-30"></div>
+
+          <div className="relative">
+            <TimeLineItem 
+              side="left"
+              title="Head Teacher" 
+              duration="5 Years" 
+              description={`Guided the Saturday program at Suffah Educational Guidance. 
+              Spearheaded the digital migration of traditional records and designed a cohesive curriculum architecture.`}
+            />
+          
+            <TimeLineItem 
+              side="right"
+              title="Data Operations Intern" 
+              duration="Summer 2021" 
+              description="Developed automated tracking systems and managed high-precision database integrity." 
+            />
           </div>
         </section>
       </div>
-
-      <section className="mt-20">
-        <h2 className="text-3xl text-[#556B2F] mb-12 text-center">Professional Experiences</h2>
-        <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[#EAD7BB] before:to-transparent">
-          
-          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#EAD7BB] bg-[#FDF5E6] text-[#556B2F] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10">
-              ❀
-            </div>
-            <div className="w-[calc(100%-4rem)] md:w-[45%] bg-white p-6 rounded-sm border border-[#EAD7BB] shadow-sm">
-              <div className="flex items-center justify-between mb-2">
-                <div className="font-bold text-[#556B2F] text-lg">Head Teacher</div>
-                <time className="font-serif italic text-xs text-[#C87D87]">5 Years</time>
-              </div>
-              <p className="text-sm leading-relaxed">
-                Led a transformative project to digitize an outdated paper system, 
-                bridging the gap between traditional administration and modern efficiency.
-              </p>
-            </div>
-          </div>
-          <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#EAD7BB] bg-[#FDF5E6] text-[#556B2F] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10">
-              ❀
-            </div>
-            <div className="w-[calc(100%-4rem)] md:w-[45%] bg-white p-6 rounded-sm border border-[#EAD7BB] shadow-sm">
-              <div className="flex items-center justify-between mb-2">
-                <div className="font-bold text-[#556B2F] text-lg">Data Operations Intern</div>
-                <time className="font-serif italic text-xs text-[#C87D87]">Summer 2021</time>
-              </div>
-              <p className="text-sm leading-relaxed">
-                Maintained high-accuracy databases for travel documentation and developed automated 
-                tracking systems to reduce manual entry errors.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
-  )
+  );
 }
-
-export default Skills

@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fleur.variable} ${smoochSans.variable} ${playfair.variable}`}>
-      <body className="bg-[#FDF5E6]antialiased">
-        <nav className="max-w-10xl px-10 py-6 flex justify-between items-center font-serif bg-[#faf7f2] text-[#556B2F]">
-          <Link href="/" className="text-xl font-bold hover:text-[#C87D87]">Asiyah Shaikh</Link>
+      <body className="bg-[#FDF5E6] antialiased min-h-screen">
+        <nav className="w-full px-10 py-6 flex justify-between items-center font-serif bg-[#faf7f2] text-[#800000] border-b border-[#EAD7BB]">
+          <Link href="/" className="text-xl font-bold hover:text-[#9E616A]">Asiyah Shaikh</Link>
           <div className="flex gap-6 text-[#6B4E31]">
             <Link href="/" className="hover:text-[#C87D87]">Home</Link>
             <Link href="/about" className="hover:text-[#C87D87]">About & Contact</Link>
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </nav>
         {children}
-        </body>
+      </body>
     </html>
   );
 }

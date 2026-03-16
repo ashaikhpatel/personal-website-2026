@@ -19,39 +19,60 @@
   }
 }
 
+@layer components {
+  .envelope-flap {
+    clip-path: polygon(0 0, 50% 70%, 100% 0);
+  }
+
+  .envelope-pocket {
+    clip-path: polygon(0 5%, 50% 65%, 100% 5%, 100% 100%, 0 100%);
+  }
+}
+
+@layer components {
+  .bio-scroll-frame {
+    position: relative;
+    padding: 3rem;
+    background-color: #F6DFE0; 
+    border: 2px solid #E5B1B6;
+    border-radius: 60px 15px 60px 15px;
+    box-shadow: 10px 10px 0px -2px #96A480;
+  }
+}
+
+@layer components {
+  .project-card-balanced {
+    @apply relative bg-[#F6DFE0] border border-[#800000] rounded-2xl p-6
+           transition-all duration-300 cursor-pointer overflow-hidden shadow-md;
+  }
+
+  .project-card-balanced:hover {
+    @apply -translate-y-1 shadow-xl;
+    box-shadow: 0 10px 30px -10px #FCEEA8; 
+    border-color: #96A480;
+  }
+
+  .status-tag-soft {
+    @apply px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold mb-4 inline-block;
+    background-color: #E5B1B6;
+    color: #800000;
+  }
+
+  .project-card-disabled {
+    @apply relative bg-[#F6DFE0]/40 border border-[#E5B1B6]/30 rounded-2xl p-6
+           cursor-default overflow-hidden opacity-70;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.mughal-arch-clip {
-  clip-path: ellipse(100% 100% at 50% 100%);
-}
-
 .romantic-bg-container {
-  background-image: url('/background.jpg');
+  background-image: url('/cottagecore.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.bio-stationery-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  background-image: url('/pink-paper.jpeg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.bio-text-overlay {
-  position: absolute;
-  top: 5%;
-  bottom: 0%;
-  left: 18%;
-  right: 15%;
-  display: flex;
-  flex-direction: column; 
 }
