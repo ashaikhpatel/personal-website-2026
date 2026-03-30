@@ -1,32 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #FFF9F0;
+  --rose: #C87D87;
+  --sage: #96A480;
+  --maroon: #800000;
+  --gold: #D1AE6D; 
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body {
+  background-color: var(--cream);
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #d38e8e;
-    --foreground: #ededed;
-  }
-}
-
-@layer components {
-  .envelope-flap {
-    clip-path: polygon(0 0, 50% 70%, 100% 0);
-  }
-
-  .envelope-pocket {
-    clip-path: polygon(0 5%, 50% 65%, 100% 5%, 100% 100%, 0 100%);
-  }
+.scrapbook-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+  background-image: 
+    linear-gradient(90deg, rgba(200, 125, 135, 0.2) 50%, transparent 50%),
+    linear-gradient(rgba(150, 164, 128, 0.2) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 48%, rgba(209, 174, 109, 0.2) 50%, transparent 52%);
+  background-size: 80px 80px;
 }
 
 @layer components {
@@ -41,38 +40,29 @@
 }
 
 @layer components {
-  .project-card-balanced {
-    @apply relative bg-[#F6DFE0] border border-[#800000] rounded-2xl p-6
-           transition-all duration-300 cursor-pointer overflow-hidden shadow-md;
+  .washi-tape {
+    @apply absolute h-8 z-30 opacity-80;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    
+    clip-path: polygon(
+      0% 8%, 15% 2%, 35% 10%, 55% 2%, 75% 8%, 95% 2%, 100% 15%, 
+      98% 85%, 85% 95%, 65% 88%, 45% 98%, 25% 90%, 5% 98%, 0% 85%
+    );
+
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1) 1px, 
+      transparent 5px
+    );
+    background-size: 100% 3px;
+    
+    mix-blend-mode: multiply; 
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
   }
 
-  .project-card-balanced:hover {
-    @apply -translate-y-1 shadow-xl;
-    box-shadow: 0 10px 30px -10px #FCEEA8; 
-    border-color: #96A480;
-  }
-
-  .status-tag-soft {
-    @apply px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold mb-4 inline-block;
-    background-color: #E5B1B6;
-    color: #800000;
-  }
-
-  .project-card-disabled {
-    @apply relative bg-[#F6DFE0]/40 border border-[#E5B1B6]/30 rounded-2xl p-6
-           cursor-default overflow-hidden opacity-70;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.romantic-bg-container {
-  background-image: url('/cottagecore.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  .tape-sage { background-color: #96A480; }
+  .tape-rose { background-color: #C87D87; }
+  .tape-sunshine { background-color: #FCEEA8; }
+  .tape-lavender { background-color: #A999BD; }
+  .tape-bluelily { background-color: #C2D6DF; }
 }

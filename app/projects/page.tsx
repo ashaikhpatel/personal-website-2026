@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TulipIcon } from '../components/Icons';
 
 const WaxSeal = ({ label, href }: { label: string, href: string }) => (
@@ -22,10 +22,13 @@ const projects = [
     shortDesc: "A personal website portfolio made using React and Next.js.",
     fullDesc: "Participated in a semester-long project to create my personal portfolio.",
     link: "https://github.com/ashaikhpatel/Personal-Website-2026",
-    tech: ["Next.js", "React", "Tailwind"],
+    tech: ["Next.js", "React", "Tailwind", "Figma"],
     previewImage: "/WiCS-Logo.jpeg",
     comingSoon: false,
-    media: []
+    media: [
+      { type: 'image', src: '/figma-design.jpg' },
+      { type: 'image', src: '/color-palette.jpeg' }
+    ]
   },
   {
     id: 2,
@@ -50,9 +53,11 @@ const projects = [
     previewImage: "/Installation_preview.jpg",
     comingSoon: false,
     media: [
-      { type: 'video', src: '/videos/IMG_0532.mp4' }, 
-      { type: 'video', src: '/videos/IMG_0460.mp4' },
-      { type: 'video', src: '/videos/IMG_0164.mp4' }
+      { type: 'image', src: '/Installation_preview.jpg' },
+      { type: 'image', src: '/Installation_1.jpg'},
+      { type: 'image', src: '/Installation_3.jpg'},
+      { type: 'image', src: '/Installation_2.jpg'},
+      { type: 'video', src: '/Installation-vid1.mp4', poster: '/Installation-vidPreview.jpg' }, 
     ]
   },
   {
@@ -89,11 +94,19 @@ const projects = [
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [activeMediaIndex, setActiveMediaIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  const handleOpenProject = (project: any) => {
+    setSelectedProject(project);
+    setActiveMediaIndex(0);
+  };
 
   return (
     <main className="min-h-screen bg-[#FFF9F0] p-10 font-playfair text-[#6B4E31]">
+        <div className="scrapbook-bg fixed inset-0 z-0 opacity-30"/>
       <div className="max-w-6xl mx-auto">
-          <div className="absolute top-15 -right-0 opacity-5 pointer-events-none rotate-45">
+          <div className="absolute top-15 -right-0 opacity-40 pointer-events-none rotate-45">
             <TulipIcon className="w-96 h-96 text-[#96A480]" />
            </div>
         
@@ -112,7 +125,7 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <div 
               key={project.id} 
-              onClick={() => !project.comingSoon && setSelectedProject(project)}
+              onClick={() => !project.comingSoon && handleOpenProject(project)}
               className={`
                 relative rounded-2xl p-6 transition-all duration-500 overflow-hidden
                 ${project.comingSoon 
@@ -139,7 +152,6 @@ export default function ProjectsPage() {
                 {project.comingSoon ? "Coming Soon" : project.tag}
               </span>
 
-              {/* TITLE: Reverted to Serif Font */}
               <h3 className={`text-2xl mb-2 font-serif ${project.comingSoon ? 'text-[#6B4E31]/20' : 'text-[#6B4E31]'}`}>
                 {project.comingSoon ? "[Locked]" : project.title}
               </h3>
@@ -151,48 +163,85 @@ export default function ProjectsPage() {
           ))}
         </div>
 
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-[#6B4E31]/30 backdrop-blur-md">
-            <div className="bg-[#FFFDFB] w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl relative border-2 border-[#E5B1B6]">
+          {selectedProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-[#6B4E31]/50 backdrop-blur-md">
+            <div className="bg-[#FFFDFB] w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl relative border-2 border-[#E5B1B6] animate-in fade-in zoom-in duration-300">
               <button 
+                type="button"
                 onClick={() => setSelectedProject(null)} 
-                className="absolute top-8 right-10 text-3xl text-[#9E616A] hover:text-[#800000] z-10 transition-transform hover:rotate-90"
+                className="absolute top-8 right-10 text-3xl text-[#9E616A] hover:scale-125 z-50 transition-transform"
               >
-                ✕
+                🌸
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="bg-[#F6DFE0]/40 p-10 border-r border-[#E5B1B6]">
                    <div className="aspect-square bg-black border-2 border-[#FCEEA8] rounded-2xl shadow-inner mb-6 overflow-hidden flex items-center justify-center">
                     {selectedProject.media && selectedProject.media.length > 0 ? (
-                        selectedProject.media[0].type === 'video' ? (
-                            <video src={selectedProject.media[0].src} autoPlay muted loop className="w-full h-full object-cover" />
+                        selectedProject.media[activeMediaIndex].type === 'video' ? (
+                            <video 
+                              key={selectedProject.media[activeMediaIndex].src}
+                              src={selectedProject.media[activeMediaIndex].src} 
+                              autoPlay muted loop controls
+                              className="w-full h-full object-cover" 
+                            />
                         ) : (
-                            <img src={selectedProject.media[0].src} className="w-full h-full object-cover" />
-                        )
-                    ) : (
+                            <img 
+                            src={selectedProject.media[activeMediaIndex].src} 
+                            alt={`${selectedProject.title} preview`}
+                            onClick={() => setIsZoomed(!isZoomed)}
+                            className={`w-full h-full cursor-zoom-in transition-all duration-500 ${
+                              isZoomed 
+                                ? 'fixed inset-0 z-[60] object-contain bg-black/90 p-10' 
+                                : 'object-cover'
+                            }`}
+                            />
+                        )): (
                         <TulipIcon className="w-12 h-12 text-[#FCEEA8] opacity-20" />
                     )}
                    </div>
-                   <div className="flex gap-4">
-                     <div className="w-16 h-16 bg-[#FCEEA8] rounded-xl border border-[#E5B1B6]" />
-                     <div className="w-16 h-16 bg-[#96A480]/20 rounded-xl border border-[#96A480]/30" />
+
+                   <div className="flex gap-4 overflow-x-auto pb-2">
+                     {selectedProject.media?.map((m: any, idx: number) => (
+                       <button
+                        type="button"
+                        key={idx}
+                        onClick={() => setActiveMediaIndex(idx)}
+                        className={`w-16 h-16 rounded-xl border-2 overflow-hidden flex-shrink-0 transition-all
+                          ${activeMediaIndex === idx ? 'border-[#96A480] scale-105 shadow-md' : 'border-[#E5B1B6] opacity-70'}
+                        `}
+                       >
+                         {m.type === 'video' ? (
+                          <img
+                           src={m.poster || selectedProject.previewImage} 
+                          alt="Video preview" 
+                          className="w-full h-full object-cover brightness-90"
+                          />
+                         ) : (
+                           <img 
+                            src={m.src} 
+                            alt={`Gallery image ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                            />
+                         )}
+                       </button>
+                     ))}
                    </div>
                 </div>
 
                 <div className="p-12 flex flex-col justify-center">
                   <h2 className="text-5xl text-[#96A480] mb-6 font-[family-name:var(--font-fleur)]">{selectedProject.title}</h2>
-                  <p className="text-[#6B4E31] leading-relaxed mb-10 border-l-2 border-[#FCEEA8] pl-6 italic">
+                  <p className="text-[#6B4E31] leading-relaxed mb-10 border-l-4 border-[#FCEEA8] pl-6 italic">
                     {selectedProject.fullDesc}
                   </p>
                   
                   <div className="mb-10">
-                    <WaxSeal label="Project Details" href={selectedProject.link} />
+                    <WaxSeal label="Visit Project" href={selectedProject.link} />
                   </div>
 
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tech.map((t: string) => (
-                      <span key={t} className="px-3 py-1 bg-[#FCEEA8] text-[#800000] text-[10px] font-bold uppercase rounded tracking-tighter">
+                      <span key={t} className="px-3 py-1 bg-[#FCEEA8] text-[#800000] text-[10px] font-bold uppercase rounded tracking-widest">
                         {t}
                       </span>
                     ))}

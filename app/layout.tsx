@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from 'next/link'
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Fleur_De_Leah, Smooch_Sans, Playfair_Display } from "next/font/google";
 
@@ -30,15 +29,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${fleur.variable} ${smoochSans.variable} ${playfair.variable}`}>
       <body className="bg-[#FDF5E6] antialiased min-h-screen">
-        <nav className="w-full px-10 py-6 flex justify-between items-center font-serif bg-[#faf7f2] text-[#800000] border-b border-[#EAD7BB]">
-          <Link href="/" className="text-xl font-bold hover:text-[#9E616A]">Asiyah Shaikh</Link>
-          <div className="flex gap-6 text-[#6B4E31]">
-            <Link href="/" className="hover:text-[#C87D87]">Home</Link>
-            <Link href="/about" className="hover:text-[#C87D87]">About & Contact</Link>
-            <Link href="/projects" className="hover:text-[#C87D87]">Projects</Link>
-            <Link href="/skills" className="hover:text-[#C87D87]">Skills</Link>
-          </div>
-        </nav>
+       <nav className="w-full px-10 py-6 flex justify-between items-center font-serif bg-[#9E616A]/30 backdrop-blur-xl sticky top-0 z-50 border-b border-[#E5B1B6]/20 shadow-sm transition-all duration-300">
+        <Link href="/" className="text-xl font-bold text-[#93445e] hover:text-[#FCEEA8] transition-colors">
+          Asiyah Shaikh
+        </Link>
+        <div className="flex gap-6 text-[#93445e]/90">
+          <Link href="/" className="hover:text-[#FCEEA8] transition-all">Home</Link>
+          <Link href="/about" className="hover:text-[#FCEEA8] transition-all">About & Contact</Link>
+          <Link href="/projects" className="hover:text-[#FCEEA8] transition-all">Projects</Link>
+          <Link href="/skills" className="hover:text-[#FCEEA8] transition-all">Skills</Link>
+          <Link href="/artifacts" className="hover:text-[#FCEEA8] transition-all">Gallery</Link>
+        </div>
+      </nav>
         {children}
       </body>
     </html>

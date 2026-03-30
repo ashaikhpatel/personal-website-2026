@@ -6,13 +6,15 @@ import { GithubIcon, LinkedinIcon, MailIcon, TulipIcon } from '../components/Ico
 const About = () => {
   return (
     <main className="min-h-screen bg-[#FFF9F0] p-30 font-playfair text-[#6B4E31]">
+        <div className="scrapbook-bg"/>
+
       <header className="text-center mb-24 space-y-4">
         <h1 className="text-xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
           My Story
         </h1>
     </header>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
-          <div className="absolute top-15 -right-0 opacity-5 pointer-events-none rotate-45">
+          <div className="absolute top-45 -right-1 opacity-60 pointer-events-none rotate-45">
             <TulipIcon className="w-96 h-96 text-[#96A480]" />
           </div>
         <section className="w-full">
