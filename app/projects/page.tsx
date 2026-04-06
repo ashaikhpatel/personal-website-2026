@@ -21,13 +21,14 @@ const projects = [
     tag: "In Progress",
     shortDesc: "A personal website portfolio made using React and Next.js.",
     fullDesc: "Participated in a semester-long project to create my personal portfolio.",
-    link: "https://github.com/ashaikhpatel/Personal-Website-2026",
+    link: "https://github.com/ashaikhpatel/personal-website-2026/blob/main/readme.md",
     tech: ["Next.js", "React", "Tailwind", "Figma"],
-    previewImage: "/WiCS-Logo.jpeg",
+    previewImage: "/wics-logo.png",
     comingSoon: false,
     media: [
       { type: 'image', src: '/figma-design.jpg' },
-      { type: 'image', src: '/color-palette.jpeg' }
+      { type: 'image', src: '/color-palette.jpeg' },
+      { type: 'image', src: '/vscode-snippet.png' },
     ]
   },
   {
@@ -38,9 +39,13 @@ const projects = [
     fullDesc: "Collaborated with a development team to modernize an outdated paper-based administrative system. I spearheaded the UI/UX ideation phase, defining the site's architecture, user flows, and aesthetic direction to ensure a seamless transition from physical to digital records.",
     link: "https://suffaheducational.org/",
     tech: ["UI/UX Ideation", "Product Strategy", "Information Architecture", "Project Scoping"],
-    previewImage: "/Suffah.jpg",
+    previewImage: "/Suffah.png",
     comingSoon: false,
-    media: []
+    media: [
+      { type: 'image', src: './suffah-about.png' },
+      { type: 'image', src: './suffah-home.png' },
+      { type: 'image', src: './suffah-contacts.png' }
+    ]
   },
   {
     id: 3,

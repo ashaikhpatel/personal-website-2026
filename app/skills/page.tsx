@@ -3,7 +3,7 @@ import TimeLineItem from '../components/TimeLineItem';
 import { TulipIcon } from '../components/Icons';
 
 const languages: string[] = [
-  "Python", "Java", "C++", "C", "HTML", "Next.js", "Tailwind", "JS"
+  "Python", "Java", "C++", "C", "HTML", "Next.js", "Tailwind", "JavaScript"
 ];
 
 const toolbeltCategories: { title: string; items: string[] }[] = [
@@ -95,7 +95,7 @@ export default function SkillsPage() {
                         key={item}
                         className="flex items-center gap-3 hover:text-[#96A480] transition-colors"
                       >
-                        <div className="w-2 h-2 rounded-full bg-[#9E616A]" />
+                        <div className="w-2 h-2 rounded-full bg-[#9E616A]"/>
                         {item}
                       </li>
                     ))}
@@ -114,7 +114,6 @@ export default function SkillsPage() {
           </header>
 
           <div className="absolute left-1/2 top-[380px] bottom-0 w-[3px] bg-gradient-to-b from-[#E5B1B6] via-[#9E616A] to-transparent -translate-x-1/2 hidden md:block opacity-30" />
-
           <div className="relative">
             {experiences.map((exp) => (
               <TimeLineItem

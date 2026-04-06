@@ -45,7 +45,7 @@ export default function Home() {
       <div className="relative z-10 max-w-6xl mx-auto p-10 flex flex-col">
         
         <header className="pt-10 mb-10">
-          <h1 className="text-10xl md:text-8xl text-[#9E616A] font-[family-name:var(--font-fleur)]">
+          <h1 className="text-10xl sm:text-6xl md:text-8xl text-[#9E616A] font-[family-name:var(--font-fleur)]">
             My Portfolio
           </h1>
         </header>
@@ -72,7 +72,7 @@ export default function Home() {
                   src={photo.src} 
                   alt="Scrapbook Memory" 
                   className="w-full h-auto border border-gray-100 block relative z-10 
-                            sepia-[0.2] brightness-[0.95] saturate-[0.9] contrast-[1.05]" 
+                            sepia-[0.2] brightness-[0.70] saturate-[1.00] contrast-[1.05]" 
                 />
               </div>
             </div>
@@ -119,7 +119,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-
       </div>
     </main>
   );
