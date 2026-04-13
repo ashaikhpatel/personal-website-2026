@@ -3,14 +3,13 @@ import { useState } from 'react';
 import { TulipIcon } from '../components/Icons';
 
 const artifactsList = [
-  { id: 1, title: "Doodle", src: '/houses.jpeg', category: "Art", color: "border-[#96A480]" },
-  { id: 2, title: "More Doodles", src: '/sea-life.jpeg', category: "Art", color: "border-[#F6DFE0]" },
-  { id: 3, title: "Even More Doodles", src: '/anatomy.jpeg', category: "Art", color: "border-[#800000]" },
+  { id: 1, title: "CS and DS Girls", src: '/CSDS-girlies.jpeg', category: "Art", color: "border-[#96A480]" },
+  { id: 2, title: "Career Fair", src: '/career-fair.jpeg', category: "Events", color: "border-[#D1AE6D]" },
+  { id: 3, title: "Friends 🫶🏼", src: '/Meher&Shradha.jpeg', category: "Art", color: "border-[#800000]" },
   { id: 4, title: "Lunch With Friends.", src: '/lunch-with-friends.jpeg', category: "Life", color: "border-[#9E616A]" },
-  { id: 5, title: "Islamic Studies Degree", src: '/aalimah-graduation.jpeg', category: "Achievement", color: "border-[#556B2F]" },
-  { id: 6, title: "Career Fair", src: '/career-fair.jpeg', category: "Events", color: "border-[#D1AE6D]" },
+  { id: 5, title: "Matcha from Gathers", src: '/Gathers.jpeg', category: "Achievement", color: "border-[#556B2F]" },
+  { id: 6, title: "Kurumi Ice Cream", src: '/Kurumi.jpeg', category: "Art", color: "border-[#F6DFE0]" },
 ];
-
 function OrnateFrame({ item, onClick }: { item: typeof artifactsList[0]; onClick: () => void }) {
   return (
     <div
@@ -23,13 +22,13 @@ function OrnateFrame({ item, onClick }: { item: typeof artifactsList[0]; onClick
         
         {item.src && (
           <div className="absolute inset-2 z-0 flex items-center justify-center p-5">
-             <img 
-              src={item.src} 
-              alt={item.title}
-              className="w-[68%] h-[50%] object-cover shadow-inner 
-                 brightness-[0.9] contrast-[1.1] saturate-[0.9]
-                 group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-100
-                 transition-all duration-1000 ease-in-out"
+            <img 
+            src={item.src} 
+            alt={item.title}
+            className={`w-[68%] h-[50%] object-cover shadow-inner 
+              brightness-[0.9] contrast-[1.1] saturate-[0.9]
+              group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-100
+              transition-all duration-1000 ease-in-out`}
             />
           </div>
         )}
