@@ -128,7 +128,6 @@ const About = () => {
              <SecurityNews />
           </div>
         </section>
-
       </div>
     </main>
   );
