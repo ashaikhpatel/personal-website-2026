@@ -55,7 +55,7 @@ useEffect(() => {
 
 const About = () => {
   return (
-    <main className="min-h-screen bg-[#FFF9F0] p-30 font-playfair text-[#6B4E31] relative overflow-hidde">
+    <main className="min-h-screen bg-[#FFF9F0] p-6 md:p-30 font-playfair text-[#6B4E31] relative overflow-hidden">
         <div className="scrapbook-bg"/>
 
       <header className="text-center mb-24 space-y-4">
@@ -105,7 +105,7 @@ const About = () => {
           </div>
 
           <div className="border-t border-[#E5B1B6] pt-8">
-            <h2 className="font-serif text-3xl mb-6 text-[#800000]">Let's Connect!</h2>
+            <h2 className="font-serif text-3xl mb-6 text-[#800000]">Let&apos;s Connect!</h2>
             
             <div className="space-y-6">
               <div className="flex items-center gap-3">
