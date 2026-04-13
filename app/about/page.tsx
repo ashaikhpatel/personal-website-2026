@@ -43,10 +43,10 @@ useEffect(() => {
                   {article.reading_time_minutes} min read • {article.user.name}
                 </p>
               </a>
-            </li>
+            </li> 
           ))
         ) : (
-          <p className="italic text-sm">Scanning Dev.to for secure updates...</p>
+         <li className="italic text-sm list-none">Scanning Dev.to for secure updates...</li>
         )}
       </ul>
     </div>
