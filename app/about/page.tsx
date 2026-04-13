@@ -1,26 +1,76 @@
 "use client";
-import React from 'react';
+import { useState, useEffect } from 'react';
 import BioFrame from '../components/BioFrame';
 import { GithubIcon, LinkedinIcon, MailIcon, TulipIcon } from '../components/Icons';
 
+function SecurityNews() {
+  const [articles, setArticles] = useState<any[]>([]);
+
+useEffect(() => {
+  fetch('https://dev.to/api/articles?tag=cybersecurity&per_page=5')
+    .then((res) => res.json())
+    .then((data) => {
+      const articles = Array.isArray(data) ? data : [];
+      
+      const filtered = articles.filter((article: any) => {
+        const title = article.title?.toLowerCase() || "";
+        return !title.includes('video') && !title.includes('youtube');
+      });
+      setArticles(filtered.slice(0, 3));
+    })
+    .catch((err) => console.error("Dev.to Fetch Error:", err));
+}, []);
+
+  return (
+   <div className="mt-12 p-6 border-2 border-[#96A480] bg-[#FDF5E6] rounded-sm font-[family-name:var(--font-smooch-sans)] shadow-md">
+      <h2 className="text-2xl text-[#556B2F] mb-4 italic border-b border-[#96A480]/30 pb-2 font-bold">
+        Lastest Bytes of Wisdom
+      </h2>
+      <ul className="space-y-6">
+        {articles.length > 0 ? (
+          articles.map((article: any) => (
+            <li key={article.id} className="group">
+              <a 
+                href={article.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block"
+              >
+                <p className="text-lg text-[#6B4E31] group-hover:text-[#9E616A] underline decoration-[#96A480]/30 font-bold leading-tight">
+                  {article.title}
+                </p>
+                <p className="text-sm text-black italic mt-1">
+                  {article.reading_time_minutes} min read • {article.user.name}
+                </p>
+              </a>
+            </li>
+          ))
+        ) : (
+          <p className="italic text-sm">Scanning Dev.to for secure updates...</p>
+        )}
+      </ul>
+    </div>
+  );
+}
+
 const About = () => {
   return (
-    <main className="min-h-screen bg-[#FFF9F0] p-30 font-playfair text-[#6B4E31]">
+    <main className="min-h-screen bg-[#FFF9F0] p-30 font-playfair text-[#6B4E31] relative overflow-hidde">
         <div className="scrapbook-bg"/>
 
       <header className="text-center mb-24 space-y-4">
-        <h1 className="text-xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
+        <h1 className="text-5xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
           My Story
         </h1>
     </header>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
-          <div className="absolute top-45 -right-1 opacity-60 pointer-events-none rotate-45">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start">
+          <div className="hidden md:block absolute top-45 -right-1 opacity-60 pointer-events-none rotate-45">
             <TulipIcon className="w-96 h-96 text-[#96A480]" />
           </div>
         <section className="w-full">
           <TulipIcon className="inline-block w-10 h-10 text-[#9E616A] mr-2 -mt-2 align-middle" />
             <div className="bio-scroll-frame text-justify">
-              <div className="space-y-6 text-lg text-[#6B4E31] leading-relaxed font-bold font-[family-name:var(--font-smooch-sans)]">
+              <div className="space-y-6 text-base md:text-lg text-[#6B4E31] leading-relaxed font-bold font-[family-name:var(--font-smooch-sans)]">
               <p>
                 <span className="text-3xl font-bold text-[#96A480] font-serif">H</span>i, I’m Asiyah. 
                  I’m a Computer Science student with a background that’s anything but linear. For a long time, I traded code for canvases; 
@@ -49,7 +99,9 @@ const About = () => {
 
         <section className="space-y-20">
           <div className="flex justify-center relative z-20">
+              <div className="max-w-[280px] sm:max-w-sm md:max-w-full">
             <BioFrame imageSrc="/Me.jpeg" />
+              </div>
           </div>
 
           <div className="border-t border-[#E5B1B6] pt-8">
@@ -73,6 +125,7 @@ const About = () => {
                 </a>
               </div>
             </div>
+             <SecurityNews />
           </div>
         </section>
 
