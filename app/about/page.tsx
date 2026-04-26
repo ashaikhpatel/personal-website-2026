@@ -1,30 +1,30 @@
 "use client";
 import { useState, useEffect } from 'react';
+import Image from 'next/image'; // Optimized for performance and stability
 import BioFrame from '../components/BioFrame';
 import { GithubIcon, LinkedinIcon, MailIcon, TulipIcon } from '../components/Icons';
 
 function SecurityNews() {
   const [articles, setArticles] = useState<any[]>([]);
 
-useEffect(() => {
-  fetch('https://dev.to/api/articles?tag=cybersecurity&per_page=5')
-    .then((res) => res.json())
-    .then((data) => {
-      const articles = Array.isArray(data) ? data : [];
-      
-      const filtered = articles.filter((article: any) => {
-        const title = article.title?.toLowerCase() || "";
-        return !title.includes('video') && !title.includes('youtube');
-      });
-      setArticles(filtered.slice(0, 3));
-    })
-    .catch((err) => console.error("Dev.to Fetch Error:", err));
-}, []);
+  useEffect(() => {
+    fetch('https://dev.to/api/articles?tag=cybersecurity&per_page=5')
+      .then((res) => res.json())
+      .then((data) => {
+        const articles = Array.isArray(data) ? data : [];
+        const filtered = articles.filter((article: any) => {
+          const title = article.title?.toLowerCase() || "";
+          return !title.includes('video') && !title.includes('youtube');
+        });
+        setArticles(filtered.slice(0, 3));
+      })
+      .catch((err) => console.error("Dev.to Fetch Error:", err));
+  }, []);
 
   return (
-   <div className="mt-12 p-6 border-2 border-[#96A480] bg-[#FDF5E6] rounded-sm font-[family-name:var(--font-smooch-sans)] shadow-md">
+    <div className="mt-12 p-6 border-2 border-[#96A480] bg-[#FDF5E6] rounded-sm font-[family-name:var(--font-smooch-sans)] shadow-md">
       <h2 className="text-2xl text-[#556B2F] mb-4 italic border-b border-[#96A480]/30 pb-2 font-bold">
-        Lastest Bytes of Wisdom
+        Latest Bytes of Wisdom
       </h2>
       <ul className="space-y-6">
         {articles.length > 0 ? (
@@ -46,7 +46,7 @@ useEffect(() => {
             </li> 
           ))
         ) : (
-         <li className="italic text-sm list-none">Scanning Dev.to for secure updates...</li>
+          <li className="italic text-sm list-none text-[#6B4E31]">Scanning Dev.to for secure updates...</li>
         )}
       </ul>
     </div>
@@ -55,19 +55,19 @@ useEffect(() => {
 
 const About = () => {
   return (
-    <main className="min-h-screen bg-[#FFF9F0] p-6 md:p-30 font-playfair text-[#6B4E31] relative overflow-hidden">
+    <main className="min-h-screen bg-[#FFF9F0] p-6 md:p-30 font-playfair text-[#6B4E31] relative overflow-x-hidden">
         <div className="scrapbook-bg"/>
 
-      <header className="text-center mb-24 space-y-4">
-        <h1 className="text-5xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
+      <header className="text-center mb-12 md:mb-24 space-y-4">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
           My Story
         </h1>
     </header>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start">
-          <div className="hidden md:block absolute top-45 -right-1 opacity-60 pointer-events-none rotate-45">
-            <TulipIcon className="w-96 h-96 text-[#96A480]" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 items-start max-w-7xl mx-auto relative">
+          <div className="hidden lg:block absolute -top-20 -right-20 opacity-40 pointer-events-none rotate-45">
+            <TulipIcon className="w-64 h-64 xl:w-96 xl:h-96 text-[#96A480]" />
           </div>
-        <section className="w-full">
+        <section className="w-full order-2 lg:order-1">
           <TulipIcon className="inline-block w-10 h-10 text-[#9E616A] mr-2 -mt-2 align-middle" />
             <div className="bio-scroll-frame text-justify">
               <div className="space-y-6 text-base md:text-lg text-[#6B4E31] leading-relaxed font-bold font-[family-name:var(--font-smooch-sans)]">
@@ -97,22 +97,23 @@ const About = () => {
           </div>
         </section>
 
-        <section className="space-y-20">
+        <section className="space-y-12 md:space-y-20 order-1 lg:order-2">
           <div className="flex justify-center relative z-20">
-              <div className="max-w-[280px] sm:max-w-sm md:max-w-full">
+              <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md aspect-[4/5]">
             <BioFrame imageSrc="/Me.jpeg" />
+              <div className="absolute inset-0 border-8 border-white/20 pointer-events-none" />
               </div>
           </div>
 
           <div className="border-t border-[#E5B1B6] pt-8">
             <h2 className="font-serif text-3xl mb-6 text-[#800000]">Let&apos;s Connect!</h2>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:grid-cols-1">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-full bg-[#F6DFE0] text-[#9E616A]">
                   <MailIcon />
                 </div>
-                <a href="mailto:asiyah.sshaikh@gmail.com" className="italic hover:text-[#9E616A] transition-colors border-b border-transparent hover:border-[#9E616A]">
+                <a href="mailto:asiyah.sshaikh@gmail.com" className="italic text-sm md:text-base hover:text-[#9E616A] transition-colors border-b border-transparent hover:border-[#9E616A] truncate">
                   asiyah.sshaikh@gmail.com
                 </a>
               </div>
@@ -125,7 +126,7 @@ const About = () => {
                 </a>
               </div>
             </div>
-             <SecurityNews />
+            <SecurityNews />
           </div>
         </section>
       </div>

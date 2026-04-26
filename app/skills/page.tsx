@@ -36,38 +36,39 @@ const experiences: { side: "left" | "right"; title: string; duration: string; de
 
 export default function SkillsPage() {
   return (
-    <main className="min-h-screen bg-[#FFF9F0] p-10 font-serif text-[#6B4E31]">
+    <main className="min-h-screen bg-[#FFF9F0] p-6 md:p-10 font-serif text-[#6B4E31] overflow-x-hidden">
       <div className="max-w-6xl mx-auto relative">
-      <div className="scrapbook-bg"/>
-        <div className="absolute top-5 -right-20 opacity-40 pointer-events-none rotate-45">
-          <TulipIcon className="w-96 h-96 text-[#96A480]" />
+        <div className="scrapbook-bg fixed inset-0 z-0 pointer-events-none" />
+      
+        <div className="absolute -top-10 -right-20 md:top-5 md:-right-20 opacity-40 pointer-events-none rotate-45">
+          <TulipIcon className="w-64 h-64 md:w-96 md:h-96 text-[#96A480]" />
         </div>
 
-        <header className="text-center mb-24 space-y-2">
-          <h1 className="text-7xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight">
+        <header className="text-center mb-16 md:mb-24 space-y-4">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] tracking-tight leading-tight">
             Technical Artistry
           </h1>
-          <div className="flex items-center justify-center gap-6">
-            <div className="h-[2px] w-24 bg-[#9E616A] opacity-30" />
-            <p className="italic text-[#9E616A] text-xl font-medium tracking-wide">
+          <div className="flex items-center justify-center gap-3 md:gap-6">
+            <div className="h-[2px] w-12 md:w-24 bg-[#9E616A] opacity-30" />
+            <p className="italic text-[#9E616A] text-base md:text-xl font-medium tracking-wide">
               A showcase of my skills and experience
             </p>
-            <div className="h-[2px] w-24 bg-[#9E616A] opacity-30" />
+            <div className="h-[2px] w-12 md:w-24 bg-[#9E616A] opacity-30" />
           </div>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-stretch mb-24 md:mb-32">
 
-          <div className="relative bg-[#F6DFE0] p-12 rounded-[4rem] border-2 border-[#E5B1B6] shadow-[inset_0_2px_10px_rgba(158,97,106,0.1)]">
-            <h2 className="text-4xl mb-10 text-[#556B2F] font-serif italic text-center decoration-4 underline-offset-8">
+          <div className="relative bg-[#F6DFE0] p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] border-2 border-[#E5B1B6] shadow-[inset_0_2px_10px_rgba(158,97,106,0.1)]">
+            <h2 className="text-3xl md:text-4xl mb-8 md:mb-10 text-[#556B2F] font-serif italic text-center decoration-4 underline-offset-8">
               Digital Languages
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
               {languages.map((lang) => (
                 <button
                   type="button"
                   key={lang}
-                  className="py-4 bg-[#FFFDFB]/80 hover:bg-[#9E616A] hover:text-[#FCEEA8] border border-[#E5B1B6] rounded-2xl text-[10px] font-bold uppercase tracking-[0.2em] text-[#800000] transition-all duration-300 hover:-translate-y-1 shadow-sm active:scale-95"
+                  className="py-3 md:py-4 bg-[#FFFDFB]/80 hover:bg-[#9E616A] hover:text-[#FCEEA8] border border-[#E5B1B6] rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-[#800000] transition-all duration-300 hover:-translate-y-1 shadow-sm active:scale-95"
                 >
                   {lang}
                 </button>
@@ -75,21 +76,21 @@ export default function SkillsPage() {
             </div>
           </div>
 
-          <div className="bg-[#F6DFE0] p-12 rounded-[4rem] border-2 border-[#E5B1B6] relative overflow-hidden">
+          <div className="bg-[#F6DFE0] p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] border-2 border-[#E5B1B6] relative overflow-hidden">
             <div className="absolute -top-4 -right-4 w-16 h-16 bg-[#9E616A] rounded-full opacity-10 blur-xl" />
-            <h2 className="text-4xl mb-10 text-[#556B2F] font-serif italic text-center">
+            <h2 className="text-3xl md:text-4xl mb-8 md:mb-10 text-[#556B2F] font-serif italic text-center">
               My Toolbelt
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
               {toolbeltCategories.map((category) => (
                 <div
                   key={category.title}
-                  className="bg-[#FFFDFB]/60 p-8 rounded-[2.5rem] border border-[#E5B1B6]"
+                  className="bg-[#FFFDFB]/60 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border border-[#E5B1B6]"
                 >
-                  <h3 className="font-bold text-[#800000] uppercase tracking-[0.3em] text-[11px] mb-6 border-b-2 border-[#FCEEA8] pb-2 text-center">
+                  <h3 className="font-bold text-[#800000] uppercase tracking-[0.3em] text-[10px] md:text-[11px] mb-4 md:mb-6 border-b-2 border-[#FCEEA8] pb-2 text-center">
                     {category.title}
                   </h3>
-                  <ul className="space-y-4 text-sm italic">
+                  <ul className="space-y-3 md:space-y-4 text-sm italic">
                     {category.items.map((item) => (
                       <li
                         key={item}
@@ -106,15 +107,16 @@ export default function SkillsPage() {
           </div>
         </div>
 
-        <section className="pt-15 relative mb-32">
-          <header className="text-center mb-24">
-            <h2 className="text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] mb-6 tracking-tight">
+        <section className="relative mb-32">
+          <header className="text-center mb-16 md:mb-24">
+            <h2 className="text-6xl md:text-8xl text-[#556B2F] font-[family-name:var(--font-fleur)] mb-6 tracking-tight leading-tight">
               Professional Journey
             </h2>
           </header>
 
-          <div className="absolute left-1/2 top-[380px] bottom-0 w-[3px] bg-gradient-to-b from-[#E5B1B6] via-[#9E616A] to-transparent -translate-x-1/2 hidden md:block opacity-30" />
-          <div className="relative">
+          <div className="absolute left-1/2 top-[120px] bottom-0 w-[3px] bg-gradient-to-b from-[#E5B1B6] via-[#9E616A] to-transparent -translate-x-1/2 hidden md:block opacity-30" />
+          
+          <div className="relative space-y-8 md:space-y-0">
             {experiences.map((exp) => (
               <TimeLineItem
                 key={exp.title}

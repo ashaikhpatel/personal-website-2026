@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ export default function Home() {
       id: 1, 
       src: "/pic-of-me.jpeg", 
       rotate: "rotate-[-6deg]", 
-      pos: "top-0 left-4",
+      pos: "top-0 left-4 md:left-4",
       tape: "tape-sunshine",
       zIndex: "z-10"
     },
@@ -17,7 +18,7 @@ export default function Home() {
       id: 2, 
       src: "/fall-at-UIC.jpeg", 
       rotate: "rotate-[4deg]", 
-      pos: "top-[220px] left-70",
+      pos: "top-[180px] right-4 md:top-[220px] md:left-70",
       tape: "tape-lavender",
       zIndex: "z-20"
     },
@@ -25,7 +26,7 @@ export default function Home() {
       id: 3, 
       src: "/undergrad-lounge.jpeg", 
       rotate: "rotate-[-2deg]", 
-      pos: "top-[480px] left-6",
+      pos: "top-[380px] left-4 md:top-[480px] md:left-6",
       tape: "tape-rose",
       zIndex: "z-30"
     },
@@ -33,62 +34,68 @@ export default function Home() {
       id: 4, 
       src: "/cafe-pic.jpeg", 
       rotate: "rotate-[4deg]", 
-      pos: "top-[700px] left-70",
+      pos: "top-[580px] right-4 md:top-[700px] md:left-70",
       tape: "tape-bluelily",
       zIndex: "z-40"
     },
   ];
 
   return (
-    <main className="relative min-h-screen w-full bg-[#FFF9F0] font-serif">
+    <main className="relative min-h-screen w-full bg-[#FFF9F0] font-serif overflow-x-hidden">
       <div className="scrapbook-bg fixed inset-0 z-0" />
-      <div className="relative z-10 max-w-6xl mx-auto p-10 flex flex-col">
+      
+      <div className="relative z-10 max-w-6xl mx-auto p-6 md:p-10 flex flex-col">
         
-        <header className="pt-10 mb-10">
-          <h1 className="text-10xl sm:text-6xl md:text-8xl text-[#9E616A] font-[family-name:var(--font-fleur)]">
+        <header className="pt-10 mb-6 md:mb-10 text-center md:text-left">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-10xl text-[#9E616A] font-[family-name:var(--font-fleur)] leading-tight">
             My Portfolio
           </h1>
         </header>
 
-        <div className="absolute top-32 right-10 rotate-[7deg] z-40">
-          <div className="bg-[#FDF5E6] p-4 shadow-md border-l-10 border-[#96A480] max-w-xs relative">
+        <div className="relative md:absolute md:top-32 md:right-10 rotate-[-2deg] md:rotate-[7deg] z-40 mb-12 md:mb-0 flex justify-center md:block">
+          <div className="bg-[#FDF5E6] p-4 shadow-md border-l-8 md:border-l-10 border-[#96A480] max-w-[280px] md:max-w-xs relative">
             <div className="washi-tape tape-sage absolute -top-3 left-1/2 -translate-x-1/2 w-24" />
-            <p className="text-[#556B2F] italic font-bold text-3xl leading-relaxed font-[family-name:var(--font-handwriting)]">
-              Computer Science @ UIC | Aspiring Cybersecurity Analyst| Educator | Developer | Engineer
+            <p className="text-[#556B2F] italic font-bold text-xl md:text-3xl leading-relaxed font-[family-name:var(--font-handwriting)]">
+              Computer Science @ UIC | Aspiring Cybersecurity Analyst | Educator | Developer | Engineer
             </p>
           </div>
         </div>
 
-        <div className="relative w-full min-h-[800px] mt-10">
+        <div className="relative w-full min-h-[900px] md:min-h-[1100px] mt-4 md:mt-10">
           {polaroids.map((photo) => (
             <div 
               key={photo.id} 
-              className={`absolute ${photo.pos} ${photo.rotate} ${photo.zIndex} w-72 transition-transform hover:scale-105 hover:z-50`}
+              className={`absolute ${photo.pos} ${photo.rotate} ${photo.zIndex} w-48 sm:w-64 md:w-72 transition-transform hover:scale-105 hover:z-50`}
             >
-              <div className="p-3 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative outline outline-8 outline-white/50">
-                <div className={`washi-tape ${photo.tape} absolute -top-4 left-1/2 -translate-x-1/2 w-32 z-20`} />
+              <div className="p-2 md:p-3 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.15)] relative outline outline-4 md:outline-8 outline-white/50">
+                <div className={`washi-tape ${photo.tape} absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 w-24 md:w-32 z-20`} />
                 
-                <img 
-                  src={photo.src} 
-                  alt="Scrapbook Memory" 
-                  className="w-full h-auto border border-gray-100 block relative z-10 
-                            sepia-[0.2] brightness-[0.70] saturate-[1.00] contrast-[1.05]" 
-                />
+                <div className="relative aspect-[4/5] w-full">
+                  <Image 
+                    src={photo.src} 
+                    alt="Scrapbook Memory" 
+                    fill
+                    sizes="(max-width: 768px) 192px, 288px"
+                    priority={photo.id === 1}
+                    className="object-cover border border-gray-100 sepia-[0.2] brightness-[0.9] saturate-[1.1] contrast-[1.05]"
+                  />
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="relative self-end mt-20 mb-20 mr-10 z-50">
+        <div className="relative self-center md:self-end mt-10 md:mt-20 mb-20 md:mr-10 z-50 scale-90 sm:scale-100">
           <div 
             className="relative w-72 h-48 cursor-pointer group"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="absolute inset-0 bg-[#FFF9F0] rounded-bl-xl rounded-br-xl shadow-2xl z-0" />
+            
             <div className={`absolute left-4 right-4 bg-white p-6 shadow-md transition-all duration-700 z-10 
               ${isOpen ? '-translate-y-48 scale-105 opacity-100' : 'translate-y-0 h-32 opacity-0'}`}>
               <div className="border border-[#C87D87]/10 h-full w-full p-4 flex flex-col items-center justify-center text-center">
-                <p className="text-s text-black leading-relaxed font-bold italic font-[family-name:var(--font-handwriting)] ">
+                <p className="text-sm text-black leading-relaxed font-bold italic font-[family-name:var(--font-handwriting)]">
                   Welcome to my digital garden. It is truly a pleasure to have you.
                   Please, make yourself at home as you wander through these curated corners.
                   I hope the view is worth your stay.
@@ -110,7 +117,8 @@ export default function Home() {
               <span className="text-[#800000] text-sm">❀</span>
             </div>
           </div>
-          <div className="mt-6 text-right">
+          
+          <div className="mt-6 text-center md:text-right">
             <p className="text-[#800000]/60 text-[11px] tracking-widest uppercase italic mb-1">
               {isOpen ? "" : "click to open"}
             </p>

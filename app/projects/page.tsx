@@ -4,11 +4,11 @@ import { TulipIcon } from '../components/Icons';
 
 const WaxSeal = ({ label, href }: { label: string, href: string }) => (
   <a href={href} target="_blank" className="group flex items-center gap-4 no-underline">
-    <div className="relative w-14 h-14 flex items-center justify-center transition-transform group-hover:rotate-12">
+    <div className="relative w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-transform group-hover:rotate-12">
       <div className="absolute inset-0 bg-[#9E616A] rounded-full opacity-90 shadow-md" />
-      <TulipIcon className="relative z-10 w-7 h-7 text-[#FCEEA8]" />
+      <TulipIcon className="relative z-10 w-6 h-6 md:w-7 md:h-7 text-[#FCEEA8]" />
     </div>
-    <span className="font-serif italic text-[#6B4E31] border-b border-[#E5B1B6] group-hover:text-[#96A480] transition-colors">
+    <span className="font-serif italic text-sm md:text-base text-[#6B4E31] border-b border-[#E5B1B6] group-hover:text-[#96A480] transition-colors">
       {label}
     </span>
   </a>
@@ -42,9 +42,9 @@ const projects = [
     previewImage: "/Suffah.png",
     comingSoon: false,
     media: [
-      { type: 'image', src: './suffah-about.png' },
-      { type: 'image', src: './suffah-home.png' },
-      { type: 'image', src: './suffah-contacts.png' }
+      { type: 'image', src: '/suffah-about.png' },
+      { type: 'image', src: '/suffah-home.png' },
+      { type: 'image', src: '/suffah-contacts.png' }
     ]
   },
   {
