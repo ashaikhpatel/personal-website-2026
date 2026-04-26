@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from 'react';
-import Image from 'next/image'; // Optimized for performance and stability
 import BioFrame from '../components/BioFrame';
 import { GithubIcon, LinkedinIcon, MailIcon, TulipIcon } from '../components/Icons';
 
@@ -22,7 +21,7 @@ function SecurityNews() {
   }, []);
 
   return (
-    <div className="mt-12 p-6 border-2 border-[#96A480] bg-[#FDF5E6] rounded-sm font-[family-name:var(--font-smooch-sans)] shadow-md">
+    <div className="mt-12 p-6 border-2 border-[#96A480] bg-[#FDF5E6] rounded-sm font-[family-name:var(--font-smooch-sans)] shadow-md relative z-10">
       <h2 className="text-2xl text-[#556B2F] mb-4 italic border-b border-[#96A480]/30 pb-2 font-bold">
         Latest Bytes of Wisdom
       </h2>
@@ -33,20 +32,20 @@ function SecurityNews() {
               <a 
                 href={article.url} 
                 target="_blank" 
-                rel="noopener noreferrer" 
-                className="block"
+                rel="noopener noreferrer"
+                className="block hover:translate-x-1 transition-transform"
               >
-                <p className="text-lg text-[#6B4E31] group-hover:text-[#9E616A] underline decoration-[#96A480]/30 font-bold leading-tight">
+                <h3 className="text-lg text-[#800000] font-bold leading-tight group-hover:text-[#9E616A]">
                   {article.title}
-                </p>
-                <p className="text-sm text-black italic mt-1">
-                  {article.reading_time_minutes} min read • {article.user.name}
+                </h3>
+                <p className="text-sm text-[#6B4E31] mt-1 opacity-80">
+                  {new Date(article.published_at).toLocaleDateString()} • {article.reading_time_minutes} min read
                 </p>
               </a>
-            </li> 
+            </li>
           ))
         ) : (
-          <li className="italic text-sm list-none text-[#6B4E31]">Scanning Dev.to for secure updates...</li>
+          <p className="italic text-[#6B4E31] opacity-60">Scanning the perimeter for updates...</p>
         )}
       </ul>
     </div>
@@ -63,9 +62,8 @@ const About = () => {
           My Story
         </h1>
     </header>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 items-start max-w-7xl mx-auto relative">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="hidden lg:block absolute -top-20 -right-20 opacity-40 pointer-events-none rotate-45">
-            <TulipIcon className="w-64 h-64 xl:w-96 xl:h-96 text-[#96A480]" />
           </div>
         <section className="w-full order-2 lg:order-1">
           <TulipIcon className="inline-block w-10 h-10 text-[#9E616A] mr-2 -mt-2 align-middle" />
@@ -98,14 +96,16 @@ const About = () => {
         </section>
 
         <section className="space-y-12 md:space-y-20 order-1 lg:order-2">
-          <div className="flex justify-center relative z-20">
-              <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md aspect-[4/5]">
+          <div className="relative flex justify-center md:justify-end">
+              <div className="relative z-10 w-full max-w-[300px] sm:max-w-sm md:max-w-md">
             <BioFrame imageSrc="/Me.jpeg" />
-              <div className="absolute inset-0 border-8 border-white/20 pointer-events-none" />
+              <div className="absolute -bottom-12 -right-12 opacity-20 pointer-events-none hidden sm:block">
+                <TulipIcon className="w-48 h-48 text-[#96A480] rotate-12" />
+              </div>
               </div>
           </div>
 
-          <div className="border-t border-[#E5B1B6] pt-8">
+          <div className="p-8 rounded-2xl border border-[#E5B1B6] shadow-sm relative z-20">
             <h2 className="font-serif text-3xl mb-6 text-[#800000]">Let&apos;s Connect!</h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:grid-cols-1">
