@@ -3,34 +3,96 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## 🌸 Personal Portfolio and Website 2026 🌸
 ### Asiyah Shaikh • Computer Science Student @ University of Illinois Chicago
 
-https://asiyah-personal-website.vercel.app/ | www.linkedin.com/in/asiyah-shaikh
+**Live Site:** [asiyah-personal-website.vercel.app](https://asiyah-personal-website.vercel.app/) &nbsp;|&nbsp; **LinkedIn:** [linkedin.com/in/asiyah-shaikh](https://www.linkedin.com/in/asiyah-shaikh/)
 
-This is my personal portfolio and "digital garden"; a place where I archive my coding projects, creative installations, and academic work. Instead of a standard tech portfolio, I built this to look like a curated scrapbook. It’s a mix of software engineering (Next.js/React) and some of my own artwork/design.
+A personal portfolio and "digital garden" built from the ground up as part of the **WiCS Wired Web-Dev Program** at UIC. Instead of a standard tech portfolio, this site is designed to feel like a curated scrapbook — a mix of software engineering and my own artwork and design sensibility.
 
-Key Features:
-    * Media-First Gallery: A custom React modal system designed to handle high-resolution photography and .mp4 video
-    * Integration of a custom handwriting font via next/font/local for a truly unique "Welcome" experience.
-    * Aesthetic : pastel/spring color palette ( #9E616A Rose / #FCEEA8 Sunshine Yellow) with high-intensity backdrop-blur navigation.
-    * Fully optimized for mobile and desktop viewing using Tailwind’s fluid grid system
+---
 
-Tech Stack 
-    * Core: Next.js 14, React, TypeScript
-    * Styling: Tailwind CSS, Framer Motion (Animations)
-    * Deployment: Vercel
-    * Tools: VS Code
+## 📋 Table of Contents
+- [About the Project](#about-the-project)
+- [Pages & Features](#pages--features)
+- [Screenshots](#screenshots)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
 
-To run the development server locally:
-# Clone the repository
-git clone https://github.com/ashaikhpatel/Personal-Website-2026.git
+---
 
-# Install dependencies
+## About the Project
+
+This site serves as my living portfolio — a place to archive coding projects, creative installations, and academic work as I transition into the cybersecurity and software development space. The design uses a pastel/spring color palette (`#9E616A` Rose / `#FCEEA8` Sunshine Yellow) with a custom handwriting font and high-intensity backdrop-blur navigation for a truly unique "Welcome" experience.
+
+The project is built with a **security-first mindset**, applying secure web practices and Git-based version control throughout the full development lifecycle.
+
+---
+
+## Pages & Features
+
+| Page | Description |
+|---|---|
+| **Home** | Scrapbook-style landing page with polaroid photo layout and handwritten welcome note |
+| **About & Contact** | Personal bio, professional journey timeline, and contact links |
+| **Projects** | Curated collection of technical and creative projects with status tags |
+| **Skills** | Digital languages and toolbelt displayed in a custom card layout |
+| **Gallery** | Media-first gallery with a custom React modal system for high-resolution photos and `.mp4` video, displayed in ornate gold frames |
+| **Cybersecurity Feed** | Live "Latest Bytes of Wisdom" feed — a real-time API integration pulling current CVE reports and cybersecurity news |
+
+---
+
+## Screenshots
+
+### Home
+![Home Page](screenshots/home.png)
+
+### About & Contact
+![About Page](screenshots/about.png)
+
+### Projects — Curated Collection
+![Projects Page](screenshots/projects.png)
+
+### Skills — Technical Artistry
+![Skills Page](screenshots/skills.png)
+
+### Experiences - My Journey
+![Experience Section](screenshots/experience.png)
+
+### Gallery
+![Gallery Page](screenshots/gallery.png)
+
+### Cybersecurity News Feed
+![Cybersecurity Feed](screenshots/API.png)
+
+### Project Detail — Ethereal Dreamscape
+![Project Detail](screenshots/ethereal.png)
+
+---
+
+## Tech Stack
+
+| Category | Tools |
+|---|---|
+| **Core** | Next.js 14, React, TypeScript |
+| **Styling** | Tailwind CSS, Framer Motion |
+| **Fonts** | Custom handwriting font via `next/font/local` |
+| **Deployment** | Vercel |
+| **Version Control** | Git & GitHub |
+| **Design** | Figma, VS Code |
+
+---
+
+## Getting Started
+
+Clone the repository and run the development server locally:
+
+```bash
+git clone https://github.com/ashaikhpatel/personal-website-2026.git
+cd personal-website-2026
 npm install
-
-# Start the dev server
 npm run dev
+```
 
-Open http://localhost:3000 to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
+
+---
 
 
-----------------------------------------------------------------------------------
-Built with 🤍 by Asiyah Shaikh
